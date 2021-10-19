@@ -1,0 +1,27 @@
+/*
+ *Journey_To_El_Dorado
+ * by Gabriel Moreno, 10/6/21
+ * This work is a derivative of 
+ * "C# Adventure Game" by http://programmingisfun.com, used under CC BY.
+ * https://creativecommons.org/licenses/by/4.0/
+ * "Journey_To_El_Dorado" is licensed under
+ * [license] by Gabriel Moreno.
+ */
+
+namespace Journey_To_El_Dorado
+{ 
+    
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Game.StartGame();
+            Game.Choice();
+            Console.Read();
+
+        
+  
+        }
+    }
+}
