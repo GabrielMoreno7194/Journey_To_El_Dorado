@@ -1,0 +1,266 @@
+namespace Journey_To_El_Dorado
+{
+
+    public static class Game
+    {
+        static string CharacterName = "";
+
+        public static void StartGame()
+        {
+                 Console.WindowHeight = Console.LargestWindowHeight - 20;
+            //Title
+            string title = @"_________ _______           _______  _        _______          _________ _______                    _______  _  ________ ______   _______  _______  _______  _______ __ ____
+\__    _/(  ___  )|\     /|(  ____ )( (    /|(  ____ \|\     /|      \__   __/(  ___  )        (  ____ \( \            (  __  \ (  ___  )(  ____ )(  ___  )(  __  \ (  ___  )
+   )  (  | (   ) || )   ( || (    )||  \  ( || (    \/( \   / )         ) (   | (   ) |        | (    \/| (            | (  \  )| (   ) || (    )|| (   ) || (  \  )| (   ) |
+   |  |  | |   | || |   | || (____)||   \ | || (__     \ (_) /          | |   | |   | |        | (__    | |            | |   ) || |   | || (____)|| (___) || |   ) || |   | |
+   |  |  | |   | || |   | ||     __)| (\ \) ||  __)     \   /           | |   | |   | |        |  __)   | |            | |   | || |   | ||     __)|  ___  || |   | || |   | |
+   |  |  | |   | || |   | || (\ (   | | \   || (         ) (            | |   | |   | |        | (      | |            | |   ) || |   | || (\ (   | (   ) || |   ) || |   | |
+|\_)  )  | (___) || (___) || ) \ \__| )  \  || (____/\   | |            | |   | (___) |        | (____/\| (____/\      | (__/  )| (___) || ) \ \__| )   ( || (__/  )| (___) |
+(____/   (_______)(_______)|/   \__/|/    )_)(_______/   \_/            )_(   (_______)        (_______/(_______/      (______/ (_______)|/   \__/|/     \|(______/ (_______)
+                                                                                                                                                                             ";
+            Write(title);
+            Console.ReadKey();       
+            Console.Clear();
+
+            //Start
+            Console.WriteLine("There are rumors of a town of gold thrown about around the Marketplace");
+
+            //Name
+            NameCharacter();
+            
+            //Choices
+            Choice();
+
+            //End 
+            EndGame();
+        }
+
+
+        static void Write(string message)
+        {
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
+
+        static void NameCharacter()
+        {
+            Console.WriteLine("What would you like to name your character's name to be?");
+            CharacterName = Console.ReadLine();
+
+            Console.WriteLine("Great! Your character is now named " + CharacterName);
+            Console.ReadKey();
+
+        }
+
+		static int Scenarios = 3;
+		static List<string> Inventory = new List<string>();
+
+		public static void Choice()
+        {
+            string input = "";
+            Console.WriteLine(CharacterName + " which path will you choose? A or B?");
+            input = Console.ReadLine();
+            input = input.ToUpper();
+            if (input == "a")
+            {
+                Console.WriteLine("You've chosen path A!");
+            }
+            else
+            {
+                Console.WriteLine("You've chosen path B!");
+            }
+
+			for (int scenario = 1; scenario <= Scenarios; scenario++)
+			{
+
+				switch (scenario)
+				{
+					case 1:
+						//Part One
+
+						//same pattern for each of the sections. 1) write the first part of the section
+						Console.WriteLine(PartOne[0]);
+
+						//2)read in player's choice (a or b)
+						Console.ForegroundColor = ConsoleColor.Green;
+
+						Console.Write("Enter your choice: ");
+						input = Console.ReadLine();
+						input = input.ToLower();
+						Console.ResetColor();
+
+						//3) if a write the next part of the array, otherwise skip next and print 3rd
+						if (input == "a")
+						{
+							Console.WriteLine(PartOne[1]);
+							Inventory.Add("flashlight");
+						}
+						else
+						{
+							Console.WriteLine(PartOne[2]);
+							Inventory.Add("umbrella");
+						}
+
+						//4) write next part of the section
+						Console.WriteLine(PartOne[3]);
+
+						//5) again if a write next, otherwise skip ahead
+						if (input == "a")
+						{
+							Console.WriteLine(PartOne[4]);
+							Inventory.Add("snack");
+
+						}
+						else
+						{
+							Console.WriteLine(PartOne[5]);
+						}
+
+						//6) print last piece of the section
+						Console.WriteLine(PartOne[6]);
+
+						break;
+
+					case 2:
+						//Part Two
+
+						Console.WriteLine(PartTwo[0]);
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.Write("Enter your choice: ");
+						input = Console.ReadLine();
+						input = input.ToLower();
+						Console.ResetColor();
+						if (input == "a")
+						{
+							Console.WriteLine(PartTwo[1]);
+							Inventory.Add("rope");
+						}
+						else
+						{
+							Console.WriteLine(PartTwo[2]);
+							Inventory.Add("chisel");
+						}
+						Console.WriteLine(PartTwo[3]);
+						if (input == "a")
+						{
+							Console.WriteLine(PartTwo[4]);
+							Inventory.Add("spider");
+						}
+						else
+						{
+							Console.WriteLine(PartTwo[5]);
+							Inventory.Add("rune");
+						}
+						Console.WriteLine(PartTwo[6]);
+
+						break;
+
+					case 3:
+						//Part Three
+
+						Console.WriteLine(PartThree[0]);
+						Console.ForegroundColor = ConsoleColor.Green;
+						Console.Write("Enter your choice: ");
+						input = Console.ReadLine();
+						input = input.ToLower();
+						Console.ResetColor();
+						if (input == "a")
+						{
+							Console.WriteLine(PartThree[1]);
+							Inventory.Add("key");
+						}
+						else
+						{
+							Console.WriteLine(PartThree[2]);
+						}
+						Console.WriteLine(PartThree[3]);
+						if (input == "a")
+						{
+							Console.WriteLine(PartThree[4]);
+							Inventory.Add("diamond");
+						}
+						else
+						{
+							Console.WriteLine(PartThree[5]);
+							Inventory.Add("rare book");
+						}
+						Console.WriteLine(PartThree[6]);
+						break;
+
+					default:
+						//default if section number does not match one of the above
+						break;
+				}
+
+				//let player advance when ready, then clear the screen
+				Console.WriteLine("Press enter to continue...");
+				Console.ReadKey();
+				Console.Clear();
+			}
+		}
+        public static void EndGame()
+        {
+            //end of game text
+            Console.WriteLine("End of story text here........");
+;			Console.WriteLine("Congrats " + CharacterName + "!");
+
+			Console.WriteLine(CharacterName + " you found some itens in your journey: ");
+
+			foreach (string item in Inventory)
+            {
+				Console.WriteLine(item);
+            }
+
+			if (Inventory.Contains("Map to El Dorado"))
+            {
+				Console.ForegroundColor = ConsoleColor.Yellow;
+				Console.WriteLine("Congrats you found the city of gold!");
+				Console.ResetColor();
+            }
+            else
+            {
+				Console.WriteLine("You didn't find the city of gold... better luck next time");
+				Console.WriteLine("Try again?");
+				Console.ReadLine();
+				StartGame();
+            }
+
+            Console.WriteLine("Press enter to exit.");
+        }
+
+        public static void Dialog(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(message);
+            Game.Dialog("A stranger approaches. Clearing their throat to get your attention, they ask\n");
+            Console.Write("Have you seen a strange creature around here?\nAbout three feet high, greenish, with fluffy hair?\n");
+            Game.Dialog("How do you answer? 1) Yes, 2) No, 3) Repeat the question, 4) Keep walking");
+            Console.ResetColor();
+
+        }
+        public static void Dialog(string message, string color)
+        {
+            if (color == "red")
+            { Console.ForegroundColor = ConsoleColor.Red; }
+            else if (color == "green")
+            { Console.ForegroundColor = ConsoleColor.Green; }
+            else if (color == "cyan")
+            { Console.ForegroundColor = ConsoleColor.Cyan; }
+            else if (color == "magenta")
+            { Console.ForegroundColor = ConsoleColor.Magenta; }
+            else if (color == "blue")
+            { Console.ForegroundColor = ConsoleColor.Blue; }
+            else if (color == "gray")
+            { Console.ForegroundColor = ConsoleColor.Gray; }
+            else
+            { Console.ForegroundColor = ConsoleColor.White; }
+
+            Console.Write(message);
+            Console.ResetColor();
+        }
+
+    }
+}
